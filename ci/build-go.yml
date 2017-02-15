@@ -9,7 +9,7 @@ image_resource:
 inputs:
 - name: legacy-concourse-repo
 outputs:
-- name: build 
+- name: build-go 
 
 run:
-  path: legacy-concourse-repo/ci/build.sh 
+  path: legacy-concourse-repo/ci/build-go.sh 

@@ -25,8 +25,8 @@ jobs:
   plan:
   - get: legacy-concourse-repo
     trigger: true
-  - task: build
-    file: legacy-concourse-repo/ci/build.yml
+  - task: build-go
+    file: legacy-concourse-repo/ci/build-go.yml
   - put: cf
     params:
       manifest: legacy-concourse-repo/manifest.yml
