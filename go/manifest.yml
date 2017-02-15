@@ -1,0 +1,4 @@
+---
+applications:
+- name: legacy-go
+  buildpack: binary_buildpack 
