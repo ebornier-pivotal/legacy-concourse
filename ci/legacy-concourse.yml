@@ -30,3 +30,4 @@ jobs:
   - put: cf
     params:
       manifest: legacy-concourse-repo/go/manifest.yml
+      path: build-go/
