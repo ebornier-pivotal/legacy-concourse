@@ -1,0 +1,32 @@
+---
+resources:
+
+- name: legacy-concourse-repo
+  type: git
+  source:
+    uri: https://github.com/ebornier-pivotal/legacy-concourse.git
+
+- name: cf
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+
+jobs:
+
+
+- name: legacy-concourse
+  serial: true
+  public: true # cf does not shows auth. logs so itis ok
+  plan:
+  - get: legacy-concourse-repo
+    trigger: true
+  - task: build
+    file: legacy-concourse-repo/ci/build.yml
+  - put: cf
+    params:
+      manifest: legacy-concourse-repo/manifest.yml
