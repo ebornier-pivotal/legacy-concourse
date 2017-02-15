@@ -19,7 +19,7 @@ resources:
 jobs:
 
 
-- name: legacy-concourse
+- name: legacy-go
   serial: true
   public: true # cf does not shows auth. logs so itis ok
   plan:
@@ -31,3 +31,18 @@ jobs:
     params:
       manifest: legacy-concourse-repo/go/manifest.yml
       path: build-go/
+
+
+- name: legacy-c
+  serial: true
+  public: true # cf does not shows auth. logs so itis ok
+  plan:
+  - get: legacy-concourse-repo
+    trigger: true
+  - task: build-c
+    file: legacy-concourse-repo/ci/build-c.yml
+  - put: cf
+    params:
+      manifest: legacy-concourse-repo/GoHttp/manifest.yml
+      path: build-c/
+

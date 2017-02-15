@@ -1,0 +1,5 @@
+---
+applications:
+- name: legacy-c
+  buildpack: binary_buildpack
+  command: ./a.out
