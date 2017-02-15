@@ -1,4 +1,5 @@
 ---
 applications:
 - name: legacy-go
-  buildpack: binary_buildpack 
+  buildpack: binary_buildpack
+  command: ./app 
